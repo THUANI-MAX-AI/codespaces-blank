@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#faf9f6" />
+    <meta name="description" content="A little coding studio for learning, experimenting, and asking questions." />
+    <title>little syntax — your coding studio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="./styles.css" />
+    <script src="./app.js" defer></script>
+  </head>
+  <body>
+    <div class="app-frame">
+      <header class="topbar">
+        <a class="brand" href="#main-content" aria-label="little syntax home">
+          <span class="brand-icon" aria-hidden="true"><span></span><span></span></span>
+          <span>little<span class="brand-light">syntax</span></span>
+        </a>
+        <span class="topbar-divider" aria-hidden="true"></span>
+        <span class="workspace-label">YOUR CODING STUDIO</span>
+        <div class="topbar-right">
+          <span class="streak-badge"><span class="streak-dot" aria-hidden="true"></span><span id="streak-count">0 lessons</span></span>
+          <span class="avatar" aria-label="Your profile">S</span>
+        </div>
+      </header>
+
+      <div class="app-layout">
+        <aside class="sidebar" aria-label="Course navigation">
+          <div class="sidebar-kicker">YOUR LEARNING PATH</div>
+          <div class="course-title">
+            <span class="course-mark" aria-hidden="true">JS</span>
+            <div><strong>The tiny beginnings</strong><span>JavaScript · Beginner</span></div>
+          </div>
+          <div class="progress-wrap">
+            <div class="progress-caption"><span>YOUR PROGRESS</span><strong id="progress-percent">0%</strong></div>
+            <div class="progress-track" role="progressbar" aria-label="Course progress" aria-valuemin="0" aria-valuemax="3" aria-valuenow="0"><span id="progress-bar"></span></div>
+          </div>
+          <div class="lesson-heading"><span>THE BASICS</span><span class="lesson-count">03</span></div>
+          <nav id="lesson-nav" class="lesson-nav" aria-label="Lessons"></nav>
+          <div class="sidebar-bottom">
+            <span class="tiny-star" aria-hidden="true">✳</span>
+            <p>Small steps<br />count as progress.</p>
+            <span class="tiny-note">COME AS YOU ARE</span>
+          </div>
+        </aside>
+
+        <main id="main-content" class="main-content">
+          <section class="lesson-intro" aria-labelledby="lesson-title">
+            <div class="breadcrumb"><span>THE TINY BEGINNINGS</span><span class="breadcrumb-divider">/</span><span id="lesson-number">LESSON 01 OF 03</span></div>
+            <div class="intro-title-row">
+              <div>
+                <div class="lesson-eyebrow"><span class="eyebrow-dot"></span><span id="lesson-topic">YOUR VERY FIRST STEP</span></div>
+                <h1 id="lesson-title">Say hello to the console.</h1>
+              </div>
+              <div class="lesson-time"><span class="clock-mark" aria-hidden="true">◷</span> 5 MIN</div>
+            </div>
+            <p id="lesson-description" class="lesson-description">You write a line. Your computer answers back. That's it: you're coding.</p>
+          </section>
+
+          <section class="workspace" aria-label="Coding workspace">
+            <div class="editor-panel">
+              <div class="panel-topbar">
+                <div class="file-tab"><span class="file-mark">JS</span><span>your-first-code.js</span><span class="unsaved-indicator" title="Your work is saved locally" aria-label="Autosaved"></span></div>
+                <span class="language-tag">JAVASCRIPT</span>
+              </div>
+              <div class="editor-subbar"><span>EDIT YOUR CODE</span><span class="editor-shortcut">Make it yours <span aria-hidden="true">↗</span></span></div>
+              <div class="code-editor">
+                <div id="line-numbers" class="line-numbers" aria-hidden="true"></div>
+                <label class="visually-hidden" for="code-input">JavaScript code editor</label>
+                <textarea id="code-input" spellcheck="false" autocapitalize="off" autocomplete="off" autocorrect="off" aria-describedby="task-copy"></textarea>
+              </div>
+              <div class="editor-footer"><span><span class="save-icon" aria-hidden="true">✓</span> Saved in this browser</span><button id="reset-button" class="reset-button" type="button">Reset code <span aria-hidden="true">↺</span></button></div>
+            </div>
+            <div class="output-panel" aria-label="Code output and debug console">
+              <div class="output-heading">
+                <div class="console-tabs" role="tablist" aria-label="Console views">
+                  <button id="output-tab" class="console-tab active" type="button" role="tab" aria-selected="true" aria-controls="output-view">OUTPUT</button>
+                  <button id="debug-console-tab" class="console-tab" type="button" role="tab" aria-selected="false" aria-controls="debug-console-view" tabindex="-1">DEBUG CONSOLE <span id="debug-count" class="debug-count" hidden>0</span></button>
+                </div>
+                <span id="run-status" class="run-status"><span class="status-dot"></span> READY WHEN YOU ARE</span>
+              </div>
+              <div id="output-view" class="console-view" role="tabpanel" aria-labelledby="output-tab">
+                <div id="output-content" class="output-content"><span class="output-placeholder">Your code's reply<br />will show up here.</span></div>
+                <div class="output-footer"><span>JAVASCRIPT CONSOLE</span><span id="output-runtime">JS · BROWSER</span></div>
+              </div>
+              <div id="debug-console-view" class="console-view debug-console-view" role="tabpanel" aria-labelledby="debug-console-tab" hidden>
+                <div id="debug-console-entries" class="debug-console-entries" aria-live="polite" aria-relevant="additions text"><div class="debug-empty">Run your code to see its console messages here.</div></div>
+                <form id="debug-console-form" class="debug-console-form">
+                  <label class="visually-hidden" for="debug-console-input">Evaluate a JavaScript expression</label>
+                  <span class="debug-prompt" aria-hidden="true">&gt;</span>
+                  <input id="debug-console-input" type="text" placeholder="Try an expression, like 2 + 2" autocomplete="off" spellcheck="false" maxlength="250" />
+                  <button id="debug-evaluate-button" type="submit">Evaluate <span aria-hidden="true">↗</span></button>
+                </form>
+                <div class="output-footer"><span>DEBUG CONSOLE · SANDBOXED</span><button id="clear-debug-console" class="clear-debug-console" type="button">Clear</button></div>
+              </div>
+            </div>
+          </section>
+
+          <section class="task-row" aria-label="Lesson challenge">
+            <span class="task-icon" aria-hidden="true">✳</span>
+            <div class="task-text"><span>YOUR LITTLE CHALLENGE</span><p id="task-copy">Try changing "Ada" to your name, then run your code.</p></div>
+            <button id="run-button" class="run-button" type="button"><span class="play-icon" aria-hidden="true">▶</span> Run code <span class="run-arrow" aria-hidden="true">↗</span></button>
+          </section>
+
+          <div id="success-message" class="success-message" role="status" hidden><span aria-hidden="true">✦</span><span id="success-copy">You did it!</span><button id="next-lesson-button" type="button">Next lesson <span aria-hidden="true">→</span></button></div>
+        </main>
+
+        <aside class="tutor-sidebar" aria-label="Your coding tutor">
+          <div class="tutor-heading">
+            <span class="tutor-icon" aria-hidden="true"><span></span><span></span><span></span></span>
+            <div class="tutor-heading-copy"><strong>Your coding buddy</strong><span><span class="available-dot"></span> RIGHT HERE IF YOU NEED ME</span></div>
+            <button id="clear-chat-button" class="clear-chat-button" type="button" aria-label="Clear conversation" title="Clear conversation">↺</button>
+          </div>
+          <div class="tutor-note"><span class="note-mark" aria-hidden="true">✳</span><p id="tutor-context">A place to ask "wait, what does that mean?" is always a good place to be.</p></div>
+          <div class="starter-label">NOT SURE WHAT TO ASK?</div>
+          <div id="suggested-questions" class="suggested-questions"></div>
+          <div class="chat-divider"><span>YOUR CHAT</span><span class="chat-live-dot"></span></div>
+          <div id="chat-messages" class="chat-messages" aria-live="polite" aria-relevant="additions text"></div>
+          <form id="chat-form" class="chat-form">
+            <label class="visually-hidden" for="chat-input">Ask your coding buddy a question</label>
+            <textarea id="chat-input" rows="1" placeholder="Ask me anything…" maxlength="400" required></textarea>
+            <button id="send-button" class="send-button" type="submit" aria-label="Send message" title="Send message"><span aria-hidden="true">↑</span></button>
+          </form>
+          <div class="tutor-caption">A FRIENDLY TUTOR · ALWAYS LEARNING WITH YOU</div>
+        </aside>
+      </div>
+    </div>
+  </body>
+</html>
